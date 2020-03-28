@@ -1,0 +1,14 @@
+{
+  "name": "alest2-ipfilters",
+  "version": "1.0.0",
+  "description": "alest2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vinicius Bazanella",
+  "license": "ISC",
+  "dependencies": {
+    "binary-search-tree": "^0.2.6"
+  }
+}
