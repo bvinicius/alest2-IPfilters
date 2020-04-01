@@ -35,10 +35,8 @@ for (let i = 0; i <= 12; i ++) {
                 ranges.splice(j, 1)
             }
         }
-        
         if (ranges.length === prev) break
     }
-
     console.log(`case ${caso} length: ${ranges.length}`)
     const iEnd = process.hrtime(iStart)
 
