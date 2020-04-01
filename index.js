@@ -24,17 +24,15 @@ for (let i = 0; i <= 12; i ++) {
     
     while (true) {
         const prev = ranges.length
-        for (let i = 0; i < ranges.length; i ++) {
+        for (let i = 0; i < ranges.length - 1; i ++) {
             const curr = ranges[i]
-            const len = ranges.length - 1
-            for (let j = i; j < ranges.lenght; j ++) {
-                const next = ranges[j]
-                if (next.first - curr.last <= 1 && next.last > curr.last) {
-                    curr.last = next.last
-                    ranges.splice(j, 1)
-                } else if (next.last < curr.last) {
-                    ranges.splice(j, 1)
-                }
+            const j = i + 1
+            const next = ranges[j]
+            if (next.first - curr.last <= 1 && next.last > curr.last) {
+                curr.last = next.last
+                ranges.splice(j, 1)
+            } else if (next.last < curr.last) {
+                ranges.splice(j, 1)
             }
         }
         
