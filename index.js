@@ -5,7 +5,7 @@ var cases = 0
 for (let i = 0; i <= 12; i ++) {
     const iStart = process.hrtime()
     const caso = i < 10 ? ('0' + i) : i.toString()
-    const casefile = `./casos/caso${caso}.txt`
+    const casefile = `./cases/caso${caso}.txt`
 
     console.log(`** CASE ${caso} STARTED. **`)
 
