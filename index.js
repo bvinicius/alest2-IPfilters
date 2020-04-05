@@ -25,7 +25,14 @@ for (let i = 0; i <= 12; i ++) {
     const filter = []
     ranges.forEach((e) => {
         if (filter.length) {
-            put(filter, e, filter.length - 1)
+            const top = filter[filter.length - 1]
+            if (e.first - top.last <= 1 && e.last > top.last) {
+                top.last = e.last
+            } else {
+                if (e.last > top.last) {
+                    filter.push(e)
+                }
+            }
         } else {
             filter.push(e)
         }
@@ -37,20 +44,6 @@ for (let i = 0; i <= 12; i ++) {
     console.log(`case ${caso} runtime: ${iEnd} seconds. \n`)
 
     cases ++
-}
-
-function put(arr, e, i) {
-    if (i < 0) return
-    if (e.first > arr[i].last) {
-        arr.push(e)
-        return
-    }
-    
-    if (e.first - arr[i].last <= 1 && e.last > arr[i].last) {
-        arr[i].last = e.last
-        return
-    }
-    else put(arr, e, i - 1)
 }
 
 const oEnd = process.hrtime(oStart)
