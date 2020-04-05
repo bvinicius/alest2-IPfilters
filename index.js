@@ -2,7 +2,7 @@ const fs = require('fs')
 const oStart = process.hrtime()
 
 var cases = 0
-for (let i = 0; i <= 12; i ++) {
+for (let i = 19; i <= 19; i ++) {
     const iStart = process.hrtime()
     const caso = i < 10 ? ('0' + i) : i.toString()
     const casefile = `./cases/caso${caso}.txt`
@@ -25,13 +25,7 @@ for (let i = 0; i <= 12; i ++) {
     const filter = []
     ranges.forEach((e) => {
         if (filter.length) {
-            const top = filter[filter.length - 1]
-
-            if (e.first - top.last <= 1 && e.last > top.last) {
-                top.last = e.last
-            } else {
-                filter.push(e)
-            }
+            put(filter, e, fitler.length - 1)
         } else {
             filter.push(e)
         }
@@ -43,6 +37,16 @@ for (let i = 0; i <= 12; i ++) {
     console.log(`case ${caso} runtime: ${iEnd} seconds. \n`)
 
     cases ++
+}
+
+function put(arr, e, i) {
+    if (i < 0) return
+    if (e.first > filter[i].last) return
+    
+    if (e.first - filter[i].last <= 1 && e.last > filter[i].last) {
+        filter[i].last = e.last
+    }
+    else put(arr, e, i)
 }
 
 const oEnd = process.hrtime(oStart)
