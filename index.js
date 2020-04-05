@@ -2,7 +2,7 @@ const fs = require('fs')
 const oStart = process.hrtime()
 
 var cases = 0
-for (let i = 0; i <= 12; i ++) {
+for (let i = 0; i <= 25; i ++) {
     const iStart = process.hrtime()
     const caso = i < 10 ? ('0' + i) : i.toString()
     const casefile = `./cases/caso${caso}.txt`
