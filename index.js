@@ -22,22 +22,22 @@ for (let i = 0; i <= 12; i ++) {
         })
         .sort((a, b) => a.first - b.first)
     
-    while (true) {
-        const prev = ranges.length
-        for (let i = 0; i < ranges.length - 1; i ++) {
-            const curr = ranges[i]
-            const j = i + 1
-            const next = ranges[j]
-            if (next.first - curr.last <= 1 && next.last > curr.last) {
-                curr.last = next.last
-                ranges.splice(j, 1)
-            } else if (next.last < curr.last) {
-                ranges.splice(j, 1)
+    const filter = []
+    ranges.forEach((e) => {
+        if (filter.length) {
+            const top = filter[filter.length - 1]
+
+            if (e.first - top.last <= 1 && e.last > top.last) {
+                top.last = e.last
+            } else {
+                filter.push(e)
             }
+        } else {
+            filter.push(e)
         }
-        if (ranges.length === prev) break
-    }
-    console.log(`case ${caso} length: ${ranges.length}`)
+    })
+
+    console.log(`case ${caso} length: ${filter.length}`)
     const iEnd = process.hrtime(iStart)
 
     console.log(`case ${caso} runtime: ${iEnd} seconds. \n`)
