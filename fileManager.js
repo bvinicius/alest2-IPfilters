@@ -12,6 +12,18 @@ class FileManager {
             .split('\n')
             .filter(e => e)
     }
+
+    /**
+     * Given an array, this method creates/overwrites a file registering the array's data, one item per line.
+     * @param {*} filepath path to the file to be written/created.
+     * @param {*} array data to be registered.
+     */
+    writeLn(filepath, array) {
+        this.fs.writeFileSync(filepath, '')
+        array.forEach(e => {
+          this.fs.appendFileSync(filepath, `${e}\n`)  
+        })
+    }
 }
 
 module.exports = FileManager
