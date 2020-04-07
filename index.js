@@ -5,15 +5,14 @@ const fm = new FileManager()
 
 var cases = 0
 const oStart = process.hrtime()
-for (let i = 0; i <= 12; i ++) {
-    const iStart = process.hrtime()
+for (let i = 0; i <= 25; i ++) {
     const caso = i < 10 ? ('0' + i) : i.toString()
     const casefile = `./cases/caso${caso}.txt`
     
     console.log(`** CASE ${caso} STARTED. **`)
     
+    const iStart = process.hrtime()
     const filter = []
-    
     const list = fm.toArray(casefile)
         .map(e => {
             const range = e.split('-').map(e=>parseInt(e))
@@ -23,7 +22,7 @@ for (let i = 0; i <= 12; i ++) {
             return {first: first, last: last}
         })
         .sort((a, b) => a.first - b.first)
-
+        
     list.forEach(e => {
         if (filter.length) {
             const top = filter[filter.length - 1]
@@ -34,7 +33,7 @@ for (let i = 0; i <= 12; i ++) {
                 filter.push(e)
 
         } else {
-            filter.push(e)  
+            filter.push(e)
         }
     })
 
@@ -48,4 +47,3 @@ for (let i = 0; i <= 12; i ++) {
 
 const oEnd = process.hrtime(oStart)
 console.log(`Filtered ${cases} lists in ${oEnd} seconds.\n`)
-fm.writeLn('./results/results.txt', results)
