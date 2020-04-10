@@ -5,7 +5,7 @@ const fm = new FileManager()
 
 var cases = 0
 const oStart = process.hrtime()
-for (let i = 0; i <= 25; i ++) {
+for (let i = 0; i <= 0; i ++) {
     const caso = i < 10 ? ('0' + i) : i.toString()
     const casefile = `./cases/caso${caso}.txt`
     
