@@ -5,7 +5,7 @@ const fm = new FileManager()
 
 var cases = 0
 const oStart = process.hrtime()
-for (let i = 0; i <= 0; i ++) {
+for (let i = 13; i <= 25; i ++) {
     const caso = i < 10 ? ('0' + i) : i.toString()
     const casefile = `./cases/caso${caso}.txt`
     
@@ -41,8 +41,9 @@ for (let i = 0; i <= 0; i ++) {
     console.log(`case ${caso} length: ${filter.length}`)
     console.log(`case ${caso} exec time: ${iEnd}\n`)
 
-    results.push(`${list.length};${iEnd}`)
     cases ++
+
+    fm.writeLn(`./filtered/caso${caso}.txt`, filter.map(e => `${e.first}-${e.last}`))
 }
 
 const oEnd = process.hrtime(oStart)

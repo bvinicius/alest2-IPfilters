@@ -2,5 +2,7 @@ node_modules/
 cases/
 results/
 sort/
+filtered/
+gabarito/
 *.class
 
